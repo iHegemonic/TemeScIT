@@ -8,7 +8,7 @@ public class Contact {
     private String lastName;
 
 
-    public Contact(String phoneNumber, String firstName, String lastName) {
+    public Contact(String id, String phoneNumber, String firstName, String lastName) {
         this.phoneNumber = phoneNumber;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -29,5 +29,10 @@ public class Contact {
 
     public String getLastName() {
         return lastName;
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName + " (" + phoneNumber + ")";
     }
 }
