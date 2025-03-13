@@ -96,7 +96,7 @@ public abstract class Phone implements PhoneOperations {
     }
 
     @Override
-    public Contact getFirstContact(){
+    public Contact getFirstContact() {
         if (contacts.isEmpty()) {
             System.out.println("No contacts available.");
             return null;
@@ -146,11 +146,11 @@ public abstract class Phone implements PhoneOperations {
                 filteredMessages.add(msg);
             }
         }
-       if (filteredMessages.size() > index) {
-           return filteredMessages.get(index).getContent();
-       } else {
-           return "No message found";
-       }
+        if (filteredMessages.size() > index) {
+            return filteredMessages.get(index).getContent();
+        } else {
+            return "No message found";
+        }
     }
 
     @Override
@@ -185,11 +185,11 @@ public abstract class Phone implements PhoneOperations {
         }
     }
 
-@Override
+    @Override
     public String toString() {
         return manufacturer + " " + model + " (IMEI: " + IMEI + ", Battery: " + currentBattery + "/"
                 + batteryLife + " hrs, Color: " + color + ", Material: " + material + ")";
-}
-
     }
+
+}
 
