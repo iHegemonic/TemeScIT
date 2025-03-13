@@ -107,12 +107,19 @@ public abstract class Phone implements PhoneOperations {
     }
 
     public void sendSMS(String phoneNumber, String message) {
+
+        int batteryConsumption = 1;
+
+        if (batteryConsumption > batteryLife) {
+            System.out.println("Not enough battery to send a SMS.");
+            return;
+        }
         if (message.length() > 500) {
             System.out.println("Could not send: Message exceeds 500 characters.");
         }
-        if (currentBattery < 1) {
-            System.out.println("Error: Not enough battery to send a message.");
-        }
+        reduceBattery(batteryConsumption);
+        messages.add(new Message(phoneNumber, message));
+        System.out.println("Message sent to " + phoneNumber + ": " + message);
 
         boolean contactOnList = false;
         for (Contact contact : contacts) {
@@ -158,12 +165,16 @@ public abstract class Phone implements PhoneOperations {
 
     @Override
     public void call(String phoneNumber) {
-        if (currentBattery < 2) {
-            System.out.println("Error: Not enough battery to make a call.");
+        int batteryConsumption = 2;
+
+        if (batteryLife < batteryConsumption) {
+            System.out.println("Not enough battery to make a call");
+            return;
         }
-        reduceBattery(2);
-        callHistory.add("Call made to " + phoneNumber);
+        reduceBattery(batteryConsumption);
+        callHistory.add("Call made to: " + phoneNumber);
         System.out.println("Calling " + phoneNumber + "...");
+
     }
 
     @Override
