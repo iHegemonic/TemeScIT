@@ -1,10 +1,6 @@
-public class MetricDistanceCalculator {
+package org.tema6;
 
-    private static final double mmToMm = 1.0;
-    private static final double cmToMm = 10.0;
-    private static final double dmToMm = 100.0;
-    private static final double mToMm = 1000;
-    private static final double kmTomm = 1000000;
+public class UnitConverter {
 
     public static double convertToMillimeters(String valueWithUnit) {
 
@@ -13,19 +9,23 @@ public class MetricDistanceCalculator {
 
         for (int i = 0; i < valueWithUnit.length(); i++) {
             char c = valueWithUnit.charAt(i);
-
             if (Character.isDigit(c) || c == '.' || c == '-') {
                 value += c;
             } else {
-                unit = valueWithUnit.substring(i);
+                unit = valueWithUnit.substring(i).trim();
                 break;
             }
         }
 
-        double numericValue = Double.parseDouble(value);
+
+        if (value.isEmpty()) {
+            return 0;
+        }
+
+        double numericValue = Double.parseDouble(value.trim());
 
         switch (unit) {
-            case "mm" :
+            case "mm":
                 return numericValue;
             case "cm":
                 return numericValue * 10;
@@ -36,15 +36,10 @@ public class MetricDistanceCalculator {
             case "km":
                 return numericValue * 1000000;
             default:
-                System.out.println("Unsupported unit, try again");
-                break;
+
+                return 0;
         }
 
-return -1;
-    }
-
-
 
     }
-
-
+}
