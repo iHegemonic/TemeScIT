@@ -1,4 +1,4 @@
-package org.example;
+package org.tema7;
 
 public enum ShotsResult {
     HIT, MISS;
