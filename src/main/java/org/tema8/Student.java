@@ -51,6 +51,10 @@ public class Student {
         return dateOfBirth;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
     public String getLastName() {
         return lastName;
     }
